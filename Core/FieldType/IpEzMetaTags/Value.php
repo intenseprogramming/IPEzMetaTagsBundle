@@ -12,7 +12,6 @@ namespace IntenseProgramming\EzMetaTagsBundle\Core\FieldType\IpEzMetaTags;
 
 use eZ\Publish\API\Repository\Exceptions\NotImplementedException;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
-use eZ\Publish\SPI\Persistence\Content\FieldValue as PersistenceValue;
 
 /**
  * Class Value.

@@ -14,7 +14,7 @@ use eZ\Publish\API\Repository\Exceptions\InvalidArgumentException;
 use eZ\Publish\Core\FieldType\FieldType;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
-use eZ\Publish\SPI\Persistence\Content\FieldValue as PersistenceValue;
+use eZ\Publish\Core\FieldType\ValidationError;
 
 /**
  * Class Type.
@@ -178,14 +178,66 @@ class Type extends FieldType
      * support complex structures like objects. See the class level doc block
      * for additional information. See the class description for more details on a hash format.
      *
-     * @param SPIValue $value
+     * @param SPIValue|Value $value
      *
      * @return mixed
      */
     public function toHash(SPIValue $value)
     {
-        // TODO: Implement toHash() method.
+        $hash = array(
+            'description' => array(
+                'content' => $value->descriptionContentId,
+                'field' => $value->descriptionFieldIdentifier
+            ),
+            'image' => array(
+                'content' => $value->imageContentId,
+                'field' => $value->imageFieldIdentifier
+            )
+        );
+
+        return $hash;
     }
 
+    /**
+     * Validates the fieldSettings of a FieldDefinitionCreateStruct or FieldDefinitionUpdateStruct
+     *
+     * This method expects that given $fieldSettings are complete, for this purpose method
+     * {@link self::applyDefaultSettings()} is provided.
+     *
+     * @param mixed $fieldSettings
+     *
+     * @return ValidationError[]
+     */
+    public function validateFieldSettings($fieldSettings)
+    {
+        if (is_array($fieldSettings) && isset($fieldSettings['type'])) {
+            return array();
+        }
+
+        return array(
+            new ValidationError('Setting-section "type" is not defined.')
+        );
+    }
+
+    /**
+     * Returns information for FieldValue->$sortKey relevant to the field type.
+     *
+     * Return value is mixed. It should be something which is sensible for
+     * sorting.
+     *
+     * It is up to the persistence implementation to handle those values.
+     * Common string and integer values are safe.
+     *
+     * For the legacy storage it is up to the field converters to set this
+     * value in either sort_key_string or sort_key_int.
+     *
+     * @param BaseValue|Value $value
+     *
+     * @return mixed
+     */
+    protected function getSortInfo(BaseValue $value)
+    {
+        return null;
+    }
 
 }

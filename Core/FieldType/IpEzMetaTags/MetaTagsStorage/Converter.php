@@ -33,8 +33,7 @@ class Converter implements ConverterInterface
      */
     public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue)
     {
-        var_dump(__METHOD__);
-        // TODO: Implement toStorageValue() method.
+        $storageFieldValue->dataText = json_encode($value->data);
     }
 
     /**
@@ -56,8 +55,7 @@ class Converter implements ConverterInterface
      */
     public function toStorageFieldDefinition(FieldDefinition $fieldDef, StorageFieldDefinition $storageDef)
     {
-        var_dump(__METHOD__);
-        // TODO: Implement toStorageFieldDefinition() method.
+        $storageDef->dataText5 = serialize($fieldDef->fieldTypeConstraints->fieldSettings);
     }
 
     /**
@@ -84,8 +82,7 @@ class Converter implements ConverterInterface
      */
     public function getIndexColumn()
     {
-        var_dump(__METHOD__);
-        // TODO: Implement getIndexColumn() method.
+        return false;
     }
 
 }
