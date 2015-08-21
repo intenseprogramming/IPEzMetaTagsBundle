@@ -1,8 +1,6 @@
 
 {% block ipezmetatags_field %}
     {% spaceless %}
-        {#<pre>#}
-            {{ dump(field) }}
-        {#</pre>#}
+        {{ render(controller('IntenseProgrammingEzMetaTagsBundle:MetaTags:render', {'contentId': content.id})) }}
     {% endspaceless %}
 {% endblock %}
