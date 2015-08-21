@@ -76,24 +76,28 @@ class MetaTagsController extends Controller
 
             // getting image and description from linked content.
             if (isset($value)) {
-                $imageContent = $contentService->loadContent($value->imageContentId);
-                if ($imageContent instanceof Content && isset($imageContent->fields[$value->imageFieldIdentifier])) {
-                    $alias = $configResolver->getParameter('image_alias', 'intense.programming.tags');
-                    $imageField = $imageContent->getField($value->imageFieldIdentifier);
+                if ($value->imageContentId) {
+                    $imageContent = $contentService->loadContent($value->imageContentId);
+                    if ($imageContent instanceof Content && isset($imageContent->fields[$value->imageFieldIdentifier])) {
+                        $alias = $configResolver->getParameter('image_alias', 'intense.programming.tags');
+                        $imageField = $imageContent->getField($value->imageFieldIdentifier);
 
-                    if (isset($imageField)) {
-                        $templateParameters['image'] = array(
-                            'url' => $aliasGenerator->getVariation($imageField, $content->versionInfo, $alias)->uri
-                        );
+                        if (isset($imageField)) {
+                            $templateParameters['image'] = array(
+                                'url' => $aliasGenerator->getVariation($imageField, $content->versionInfo, $alias)->uri
+                            );
+                        }
                     }
                 }
 
-                $descriptionContent = $contentService->loadContent($value->descriptionContentId);
-                if (isset($imageContent->fields[$value->descriptionFieldIdentifier])) {
-                    $templateParameters['description'] = array(
-                        'content' => $descriptionContent,
-                        'field' => $value->descriptionFieldIdentifier
-                    );
+                if ($value->descriptionContentId) {
+                    $descriptionContent = $contentService->loadContent($value->descriptionContentId);
+                    if (isset($descriptionContent->fields[$value->descriptionFieldIdentifier])) {
+                        $templateParameters['description'] = array(
+                            'content' => $descriptionContent,
+                            'field' => $value->descriptionFieldIdentifier
+                        );
+                    }
                 }
             }
 
