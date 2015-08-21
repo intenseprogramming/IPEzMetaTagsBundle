@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<software>
+    <metadata>
+        <name>Intense Programming eZ Publish Meta Tags</name>
+        <copyright>Copyright (C) 2015 Intense Programming. All rights reserved.</copyright>
+        <license />
+        <info_url>http://www.intense-programming.de</info_url>
+    </metadata>
+
+    <dependencies>
+        <requires />
+        <extends />
+    </dependencies>
+
+</software>

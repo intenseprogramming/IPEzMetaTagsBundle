@@ -1,0 +1,18 @@
+{
+    "name": "intenseprogramming/ezmetatagsbundle",
+    "description": "Intense Programming Meta Tags Bundle is an eZ Publish 5 bundle getting meta-tags to be configurable via content in eZ Publish.",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "IntenseProgramming",
+            "homepage": "http://www.intense-programming.de"
+        }
+    ],
+    "require": {
+        "ezsystems/ezpublish-kernel": "*"
+    },
+    "autoload": {
+        "psr-0": {"IntenseProgramming\\EzMetaTagsBundle": ""}
+    },
+    "target-dir": "IntenseProgramming/EzMetaTagsBundle"
+}

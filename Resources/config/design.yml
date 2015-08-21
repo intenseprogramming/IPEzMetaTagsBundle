@@ -1,0 +1,4 @@
+system:
+    default:
+        field_templates:
+            - {template: IntenseProgrammingEzMetaTagsBundle::meta_tag_content_field.html.twig, priority: 0}

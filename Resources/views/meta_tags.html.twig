@@ -1,0 +1,13 @@
+
+<link rel="canonical" href="{{ path(location, [], true) }}" />
+<meta property="og:url" content="{{ path(location, [], true) }}" />
+{% if type is defined %}
+<meta property="og:type" content="{{ type }}" />
+{% endif %}
+<meta property="og:title" content="{{ ez_content_name(content) }}" />
+{% if description is defined %}
+<meta property="og:description" content="{{ ez_render_field(description.content, description.field) }}" />
+{% endif %}
+{% if image is defined %}
+<meta property="og:image" content="{{ image.url }}" />
+{% endif %}

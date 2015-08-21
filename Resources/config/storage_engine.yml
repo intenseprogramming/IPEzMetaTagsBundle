@@ -1,0 +1,8 @@
+parameters:
+    ezpublish.fieldType.ipezmetatags.converter.class: IntenseProgramming\EzMetaTagsBundle\Core\FieldType\IpEzMetaTags\MetaTagsStorage\Converter
+
+services:
+    ezpublish.fieldType.ipezmetatags.converter:
+        class: %ezpublish.fieldType.ipezmetatags.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ipezmetatags, callback: '::create'}

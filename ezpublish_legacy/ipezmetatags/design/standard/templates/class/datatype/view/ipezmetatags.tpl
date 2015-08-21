@@ -1,0 +1,1 @@
+<h6>Selected Type:</h6> {$class_attribute.content.type}

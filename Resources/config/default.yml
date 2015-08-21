@@ -1,0 +1,5 @@
+
+system:
+    default:
+        template: IntenseProgrammingEzMetaTagsBundle::meta_tags.html.twig
+        image_alias: large

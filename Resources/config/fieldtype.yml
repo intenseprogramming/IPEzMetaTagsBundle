@@ -1,0 +1,9 @@
+parameters:
+    ezpublish.fieldType.ipezmetatags.class: IntenseProgramming\EzMetaTagsBundle\Core\FieldType\IpEzMetaTags\Type
+
+services:
+    ezpublish.fieldType.ipezmetatags:
+        class: %ezpublish.fieldType.ipezmetatags.class%
+        parent: ezpublish.fieldType
+        tags:
+            - {name: ezpublish.fieldType, alias: ipezmetatags}
